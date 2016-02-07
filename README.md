@@ -6,7 +6,7 @@ Arguments are the strings (default behaviour) or regular expressions (**-r** opt
 
 **-h** option shows all of the headers of matched messages
 
-**-d** option deletes matched messages
+**-d** option deletes matched messages from mail queue
 
 ## Usage example:
 
