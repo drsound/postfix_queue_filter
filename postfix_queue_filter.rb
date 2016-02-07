@@ -18,8 +18,8 @@ end
 options = {}
 parser = OptionParser.new do |opts|
   opts.banner = "Usage: #{File.basename($0)} [OPTION]... FILTER..."
-  opts.on('-d', '--delete', 'Delete matching messages from mail queue') { options[:delete] = true }
-  opts.on('-h', '--headers', 'Dump matched messages headers') { options[:dump_headers] = true }
+  opts.on('-d', '--delete', 'Delete matched messages from mail queue') { options[:delete] = true }
+  opts.on('-h', '--headers', 'Dump headers of matched messages') { options[:dump_headers] = true }
   opts.on('-r', '--regexp', 'Filters are regular expressions') { options[:regexp] = true }
 end
 
