@@ -2,17 +2,8 @@
 
 require 'optparse'
 
-def postqueue
-  lines = `postqueue -p`.split(/\n/)
-  lines.grep(/^[0-9A-F]{9}/).map { |line| line.gsub(/[!*\s].*/, '') }
-end
-
 def postcat(id)
   `postcat -q -h '#{id}'`.split(/\n/)
-end
-
-def delete(id)
-  `postsuper -d '#{id}'`
 end
 
 options = {}
@@ -32,7 +23,7 @@ rescue OptionParser::ParseError
 end
 
 matches = []
-queue_ids = postqueue
+queue_ids = `postqueue -p`.split(/\n/).grep(/^[0-9A-F]{9}/).map { |line| line.gsub(/[!*\s].*/, '') }
 queue_ids.each.with_index(1) do |id, i|
   puts "Examining message #{i}/#{queue_ids.size}: #{id}"
   if ARGV.all? do |filter|
@@ -53,6 +44,6 @@ matches.each { |id| puts id }
 if options[:delete]
   matches.each.with_index(1) do |id, i|
     puts "Deleting message #{i}/#{matches.size}: #{id}"
-    delete(id)
+    `postsuper -d '#{id}'`
   end
 end
