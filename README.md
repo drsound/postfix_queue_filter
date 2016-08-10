@@ -24,5 +24,5 @@ GNU General Public License v3.0, see LICENSE file
 
 ## Author
 
-Alessandro Zarrilli (Poggibonsi - Italy)  
+Alessandro Zarrilli (Firenze - Italy)  
 alessandro@zarrilli.net
